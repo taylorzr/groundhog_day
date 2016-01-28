@@ -22,7 +22,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+Date.today # => 2016-01-28
+
+GroundhogDay.enable! date: Date.new(2014, 11, 15)
+
+Date.today # => 2014-11-15
+
+# ... wait for a day to pass
+Date.today # => 2014-11-15
+
+GroundhogDay.disable!
+
+Date.today # => 2016-01-29
+```
 
 ## Development
 
