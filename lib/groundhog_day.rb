@@ -1,6 +1,7 @@
 require 'groundhog_day/version'
 require 'groundhog_day/date_extensions'
 require 'groundhog_day/time_extensions'
+require 'groundhog_day/datetime_extensions'
 require 'date'
 
 module GroundhogDay
@@ -9,6 +10,7 @@ module GroundhogDay
       @date = date.to_date
       Time.singleton_class.prepend TimeExtensions unless Time.singleton_class.ancestors.include? TimeExtensions
       Date.singleton_class.prepend DateExtensions unless Date.singleton_class.ancestors.include? DateExtensions
+      DateTime.singleton_class.prepend DateTimeExtensions unless DateTime.singleton_class.ancestors.include? DateTimeExtensions
       @enabled = true
     end
 
