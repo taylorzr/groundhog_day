@@ -21,9 +21,10 @@ Or install it yourself as:
     $ gem install groundhog_day
 
 ## Usage
-
+#### Repeating Date:
+Today will always be the date provided.
 ```ruby
-Date.today # => 2016-01-28
+Date.today # => 2016-02-02
 
 GroundhogDay.enable! date: Date.new(2014, 11, 15)
 
@@ -34,7 +35,24 @@ Date.today # => 2014-11-15
 
 GroundhogDay.disable!
 
-Date.today # => 2016-01-29
+Date.today # => 2016-02-03
+```
+#### Repeating Time:
+Now will always be the date provided, but time will be real-time.
+
+```ruby
+Time.now # => 2016-02-02 10:00:00 -0600
+
+GroundhogDay.enable! date: Date.new(2014, 11, 15)
+
+Time.now # => 2014-11-15 10:00:05 -0600
+
+# ... wait 10 minutes
+Time.now # => 2014-11-15 10:10:05 -0600
+
+GroundhogDay.disable!
+
+Time.now # => 2016-01-29 10:10:10 -0600
 ```
 
 ## Development
@@ -45,7 +63,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/groundhog_day.
+Bug reports and pull requests are welcome on GitHub at https://github.com/taylorzr/groundhog_day.
 
 
 ## License
