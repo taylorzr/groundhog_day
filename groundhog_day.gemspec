@@ -13,10 +13,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/taylorzr/groundhog_day"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.files         = ["README.md", "LICENSE.txt", "Rakefile"]
+  spec.files        += ['lib/groundhog_day.rb', 'lib/groundhog_day/date_extensions.rb', 'lib/groundhog_day/datetime_extensions.rb', 'lib/groundhog_day/time_extensions.rb','lib/groundhog_day/version.rb']
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
