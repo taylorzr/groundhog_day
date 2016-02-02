@@ -7,9 +7,9 @@ require 'date'
 module GroundhogDay
   class << self
     def enable!(date: Date.new(1982, 6, 16))
-      @date = date.to_date
-      Time.singleton_class.prepend TimeExtensions unless Time.singleton_class.ancestors.include? TimeExtensions
-      Date.singleton_class.prepend DateExtensions unless Date.singleton_class.ancestors.include? DateExtensions
+      @date = parse_date date
+      Time.singleton_class.prepend     TimeExtensions     unless Time.singleton_class.ancestors.include?     TimeExtensions
+      Date.singleton_class.prepend     DateExtensions     unless Date.singleton_class.ancestors.include?     DateExtensions
       DateTime.singleton_class.prepend DateTimeExtensions unless DateTime.singleton_class.ancestors.include? DateTimeExtensions
       @enabled = true
     end
@@ -28,6 +28,16 @@ module GroundhogDay
 
     def date=(value)
       @date = value.to_date
+    end
+
+    private
+
+    def parse_date(date)
+      if date.is_a? String
+        Date.parse date
+      else
+        date.to_date
+      end
     end
   end
 end
