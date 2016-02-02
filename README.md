@@ -55,6 +55,16 @@ GroundhogDay.disable!
 Time.now # => 2016-01-29 10:10:10 -0600
 ```
 
+#### Rails
+```ruby
+# config/initializers/groundhog_day.rb
+
+if (groundhog_date = ENV['GROUNDHOG_DATE'])
+  require 'groundhog_day'
+  GroundhogDay.enable! date: Date.parse(groundhog_date)
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
